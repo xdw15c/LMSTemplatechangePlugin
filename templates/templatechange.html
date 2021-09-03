@@ -1,0 +1,71 @@
+{extends file="layout.html"}
+{block name=title}LMS: {$layout.pagetitle|striphtml}{/block}
+{block name=module_content}
+<!--// $Id$ //-->
+<H1><span class="bold">{$layout.pagetitle}</span></H1>
+<FORM name="templatechange" method="POST" action="?m=templatechange&amp;settemplate">
+<INPUT type="submit" class="hiddenbtn">
+<TABLE class="lmsbox">
+    <THEAD>
+	<TR>
+		<TD>
+			<div class="bold" style="float:left">
+				{trans("Select template:")}
+			</div>
+		</TD>
+	</TR>
+    </THEAD>
+    <TBODY>
+aktualnie wybrany szablon: <B>{$actualtemplate}</B>
+	<TR>
+		<TD width="100%">
+			<TABLE class="lmsbox-inner lms-ui-background-cycle">
+				<COLGROUP>
+					<COL style="width: 1%;">
+					<COL style="width: 96%;">
+					<COL style="width: 1%;">
+					<COL style="width: 1%;">
+					<COL style="width: 1%;">
+				</COLGROUP>
+				<THEAD>
+				<TR>
+					<TD class="bold nobr">
+						<IMG src="img/host.gif" ALT=""> {trans("Name:")}
+					</TD>
+					<TD class="nobr">{trans("Description:")}</TD>
+					<TD></TD>
+				</TR>
+				</THEAD>
+				<TBODY class="lms-ui-multi-check">
+				{foreach $templates as $host}
+				<TR class="highlight">
+					<TD class="bold nobr">
+						<IMG src="img/host.gif" ALT=""> {$host.name}
+					</TD>
+					<TD>{$host.description}</TD>
+					<TD>
+						<INPUT TYPE="radio" NAME="templatka" VALUE={$host.name} {if $host.name==$actualtemplate} checked{/if}>
+					</TD>
+				</TR>
+				{foreachelse}
+				<TR>
+					<TD colspan="5" class="empty-table">
+						<p>{trans("No available templates to chose from.")}</p>
+					</TD>
+				</TR>
+				{/foreach}
+				<TR class="lms-ui-button-panel">
+					<TD colspan="2" class="nobr">
+					</TD>
+					<TD colspan="3" class="buttons">
+						<A href="javascript:document.templatechange.submit();">{trans("Submit")} <IMG src="img/save.gif" ALT=""></A>
+					</TD>
+				</TR>
+				</TBODY>
+			</TABLE>
+		</TD>
+	</TR>
+    </TBODY>
+</TABLE>
+</FORM>
+{/block}
