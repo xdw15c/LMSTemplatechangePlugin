@@ -26,6 +26,6 @@
 
 $_LANG['invoices template changing'] = 'zmienianie templatek faktur';
 $_LANG['Change invoice template'] = 'zmienianie templatki faktur';
-$_LANG['Invoice template'] = 'Szblony faktur';
+$_LANG['Invoice template'] = 'Szablony faktur';
 
 ?>
